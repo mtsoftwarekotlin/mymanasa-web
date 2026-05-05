@@ -1,6 +1,12 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { ArrowLeft, Loader2, LockKeyhole } from "lucide-react";
+import {
+  ArrowLeft,
+  Eye,
+  EyeOff,
+  Loader2,
+  LockKeyhole,
+} from "lucide-react";
 import { motion } from "framer-motion";
 
 import BrandHeader from "@/components/BrandHeader";
@@ -29,6 +35,17 @@ export default function CreateAccountPage() {
   const [accountExists, setAccountExists] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+
+  const passwordHasValue = form.password.length > 0;
+  const confirmPasswordHasValue = form.confirmPassword.length > 0;
+
+  const passwordsDoNotMatch =
+      passwordHasValue &&
+      confirmPasswordHasValue &&
+      form.password !== form.confirmPassword;
+
   function handleChange(event) {
     const { name, value } = event.target;
 
@@ -36,6 +53,9 @@ export default function CreateAccountPage() {
       ...current,
       [name]: value,
     }));
+
+    setError("");
+    setAccountExists(false);
   }
 
   async function handleSubmit(event) {
@@ -133,6 +153,7 @@ export default function CreateAccountPage() {
                       <div className="rounded-2xl border border-[#b8bfb3]/70 bg-white/70 p-4 text-sm leading-6 text-[#607066]">
                         If you already started your registration, sign in to
                         continue the payment and activate your account.
+
                         <Button
                             asChild
                             className="mt-4 h-11 w-full rounded-full bg-[#4a6b5c] text-white hover:bg-[#3d5a4d]"
@@ -146,6 +167,7 @@ export default function CreateAccountPage() {
                     <Label htmlFor="fullName" className="text-[#2f453b]">
                       Full name
                     </Label>
+
                     <Input
                         id="fullName"
                         name="fullName"
@@ -162,6 +184,7 @@ export default function CreateAccountPage() {
                     <Label htmlFor="email" className="text-[#2f453b]">
                       Email
                     </Label>
+
                     <Input
                         id="email"
                         name="email"
@@ -178,37 +201,101 @@ export default function CreateAccountPage() {
                     <Label htmlFor="password" className="text-[#2f453b]">
                       Password
                     </Label>
-                    <Input
-                        id="password"
-                        name="password"
-                        type="password"
-                        value={form.password}
-                        onChange={handleChange}
-                        placeholder="Create a password"
-                        className="h-11 border-[#b8bfb3] bg-white"
-                        autoComplete="new-password"
-                    />
+
+                    <div className="relative">
+                      <Input
+                          id="password"
+                          name="password"
+                          type={showPassword ? "text" : "password"}
+                          value={form.password}
+                          onChange={handleChange}
+                          placeholder="Create a password"
+                          className="h-11 border-[#b8bfb3] bg-white pr-12"
+                          autoComplete="new-password"
+                      />
+
+                      <button
+                          type="button"
+                          onClick={() => setShowPassword((current) => !current)}
+                          className="absolute right-3 top-1/2 -translate-y-1/2 text-[#607066] hover:text-[#2f453b]"
+                          aria-label={
+                            showPassword ? "Hide password" : "Show password"
+                          }
+                      >
+                        {showPassword ? (
+                            <EyeOff className="h-5 w-5" />
+                        ) : (
+                            <Eye className="h-5 w-5" />
+                        )}
+                      </button>
+                    </div>
+
+                    {passwordHasValue && form.password.length < 6 && (
+                        <p className="text-xs text-red-600">
+                          Password must have at least 6 characters.
+                        </p>
+                    )}
                   </div>
 
                   <div className="space-y-2">
                     <Label htmlFor="confirmPassword" className="text-[#2f453b]">
                       Confirm password
                     </Label>
-                    <Input
-                        id="confirmPassword"
-                        name="confirmPassword"
-                        type="password"
-                        value={form.confirmPassword}
-                        onChange={handleChange}
-                        placeholder="Repeat your password"
-                        className="h-11 border-[#b8bfb3] bg-white"
-                        autoComplete="new-password"
-                    />
+
+                    <div className="relative">
+                      <Input
+                          id="confirmPassword"
+                          name="confirmPassword"
+                          type={showConfirmPassword ? "text" : "password"}
+                          value={form.confirmPassword}
+                          onChange={handleChange}
+                          placeholder="Repeat your password"
+                          className={`h-11 bg-white pr-12 ${
+                              passwordsDoNotMatch
+                                  ? "border-red-400 focus-visible:ring-red-400"
+                                  : "border-[#b8bfb3]"
+                          }`}
+                          autoComplete="new-password"
+                      />
+
+                      <button
+                          type="button"
+                          onClick={() =>
+                              setShowConfirmPassword((current) => !current)
+                          }
+                          className="absolute right-3 top-1/2 -translate-y-1/2 text-[#607066] hover:text-[#2f453b]"
+                          aria-label={
+                            showConfirmPassword
+                                ? "Hide confirm password"
+                                : "Show confirm password"
+                          }
+                      >
+                        {showConfirmPassword ? (
+                            <EyeOff className="h-5 w-5" />
+                        ) : (
+                            <Eye className="h-5 w-5" />
+                        )}
+                      </button>
+                    </div>
+
+                    {passwordsDoNotMatch && (
+                        <p className="text-xs text-red-600">
+                          Passwords do not match.
+                        </p>
+                    )}
+
+                    {!passwordsDoNotMatch &&
+                        passwordHasValue &&
+                        confirmPasswordHasValue && (
+                            <p className="text-xs text-[#4a6b5c]">
+                              Passwords match.
+                            </p>
+                        )}
                   </div>
 
                   <Button
                       type="submit"
-                      disabled={isLoading}
+                      disabled={isLoading || passwordsDoNotMatch}
                       className="h-12 w-full rounded-full bg-[#4a6b5c] text-base text-white shadow-lg hover:bg-[#3d5a4d]"
                   >
                     {isLoading ? (

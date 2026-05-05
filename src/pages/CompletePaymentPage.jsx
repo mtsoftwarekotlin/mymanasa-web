@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { ArrowLeft, Loader2, LogIn } from "lucide-react";
+import { ArrowLeft, Eye, EyeOff, Loader2, LogIn } from "lucide-react";
 import { motion } from "framer-motion";
 
 import BrandHeader from "@/components/BrandHeader";
@@ -27,6 +27,7 @@ export default function CompletePaymentPage() {
     const [error, setError] = useState("");
     const [info, setInfo] = useState("");
     const [isLoading, setIsLoading] = useState(false);
+    const [showPassword, setShowPassword] = useState(false);
 
     function handleChange(event) {
         const { name, value } = event.target;
@@ -35,6 +36,9 @@ export default function CompletePaymentPage() {
             ...current,
             [name]: value,
         }));
+
+        setError("");
+        setInfo("");
     }
 
     async function handleSubmit(event) {
@@ -168,16 +172,34 @@ export default function CompletePaymentPage() {
                                     <Label htmlFor="password" className="text-[#2f453b]">
                                         Password
                                     </Label>
-                                    <Input
-                                        id="password"
-                                        name="password"
-                                        type="password"
-                                        value={form.password}
-                                        onChange={handleChange}
-                                        placeholder="Enter your password"
-                                        className="h-11 border-[#b8bfb3] bg-white"
-                                        autoComplete="current-password"
-                                    />
+
+                                    <div className="relative">
+                                        <Input
+                                            id="password"
+                                            name="password"
+                                            type={showPassword ? "text" : "password"}
+                                            value={form.password}
+                                            onChange={handleChange}
+                                            placeholder="Enter your password"
+                                            className="h-11 border-[#b8bfb3] bg-white pr-12"
+                                            autoComplete="current-password"
+                                        />
+
+                                        <button
+                                            type="button"
+                                            onClick={() => setShowPassword((current) => !current)}
+                                            className="absolute right-3 top-1/2 -translate-y-1/2 text-[#607066] hover:text-[#2f453b]"
+                                            aria-label={
+                                                showPassword ? "Hide password" : "Show password"
+                                            }
+                                        >
+                                            {showPassword ? (
+                                                <EyeOff className="h-5 w-5" />
+                                            ) : (
+                                                <Eye className="h-5 w-5" />
+                                            )}
+                                        </button>
+                                    </div>
                                 </div>
 
                                 <Button
