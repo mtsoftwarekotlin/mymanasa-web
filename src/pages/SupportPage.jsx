@@ -4,7 +4,6 @@ import {
     ArrowLeft,
     CheckCircle2,
     Clock,
-    CreditCard,
     HelpCircle,
     ShieldCheck,
     UserCheck,
@@ -52,21 +51,21 @@ const whatIsMyManasa = [
 const helpTopics = [
     {
         icon: UserCheck,
-        title: "Account activation",
+        title: "Account access",
         description:
-            "If you completed payment but your access in the app isn't active yet, our team can check your activation status and get you sorted.",
-    },
-    {
-        icon: CreditCard,
-        title: "Payment issues",
-        description:
-            "If your payment was declined, canceled, duplicated, or doesn't seem to have applied to your account, reach out and we'll verify it with you.",
+            "If your account isn't active yet, our team can check your access status and get you sorted as soon as possible.",
     },
     {
         icon: ShieldCheck,
         title: "Login problems",
         description:
-            "If you can't sign in to the app, make sure you're using the same email and password you set up on this website during registration.",
+            "If you can't sign in to the app, make sure you're using the same email and password you set up during registration.",
+    },
+    {
+        icon: HelpCircle,
+        title: "General support",
+        description:
+            "Any other questions or issues with the app? Reach out and we'll do our best to help you.",
     },
 ];
 
@@ -74,7 +73,7 @@ const requiredInfo = [
     "Your full name as used during registration",
     "The email address linked to your MyManasa account",
     "A short description of what's happening",
-    "A payment reference or screenshot, if available",
+    "A screenshot or description of the issue, if available",
 ];
 
 export default function SupportPage() {
@@ -107,8 +106,8 @@ export default function SupportPage() {
                             </CardTitle>
 
                             <CardDescription className="mx-auto max-w-2xl text-[#607066]">
-                                We're here to help. Whether you're having trouble creating your account,
-                                completing a payment, or signing in to the app — our support team will get you sorted.
+                                We're here to help. Whether you're having trouble with your account
+                                or signing in to the app — our support team will get you sorted.
                             </CardDescription>
                         </CardHeader>
 
@@ -200,7 +199,8 @@ export default function SupportPage() {
                                         </h3>
                                     </div>
                                     <p className="text-sm leading-6 text-[#607066]">
-                                        Double-check that your email is spelled correctly, your payment went through, and you're using the credentials you created on this website — not from another service.
+                                        Double-check that your email is spelled correctly and you're using
+                                        the credentials you created during registration — not from another service.
                                     </p>
                                 </div>
                             </div>
