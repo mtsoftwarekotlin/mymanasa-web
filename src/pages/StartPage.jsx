@@ -1,9 +1,32 @@
 import { Link } from "react-router-dom";
-import { ArrowRight, LogIn } from "lucide-react";
+import { ArrowRight, LogIn, Brain, Heart, Wind, ShieldCheck } from "lucide-react";
 import { motion } from "framer-motion";
 
 import BrandHeader from "@/components/BrandHeader";
 import { Button } from "@/components/ui/button";
+
+const features = [
+  {
+    icon: Brain,
+    label: "Track your mood",
+    description: "Log how you feel each day and see your patterns over time.",
+  },
+  {
+    icon: Wind,
+    label: "Guided exercises",
+    description: "Breathing, grounding, and relaxation techniques — anytime you need them.",
+  },
+  {
+    icon: Heart,
+    label: "Learn & grow",
+    description: "Psychoeducational content on anxiety, stress, sleep, and more.",
+  },
+  {
+    icon: ShieldCheck,
+    label: "Your safety plan",
+    description: "Build a personal safety plan and access crisis resources when it matters most.",
+  },
+];
 
 export default function StartPage() {
   return (
@@ -18,22 +41,39 @@ export default function StartPage() {
               className="text-center"
           >
             <h1 className="mx-auto max-w-3xl text-4xl font-bold tracking-tight text-[#2f453b] md:text-6xl">
-              Create and activate your MyManasa account
+              Your mental wellness companion
             </h1>
 
             <p className="mx-auto mt-5 max-w-2xl text-base leading-7 text-[#607066] md:text-lg">
-              Create your account online and complete the payment to activate
-              access. After activation, you can sign in to the mobile app with the
-              same email and password.
+              MyManasa is a mobile app designed to support your emotional wellbeing — helping you understand your moods, manage stress, and build healthy habits, one day at a time.
             </p>
 
-            <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
+            <div className="mt-10 grid grid-cols-2 gap-3 text-left sm:grid-cols-4 max-w-3xl mx-auto">
+              {features.map(({ icon: Icon, label, description }) => (
+                  <div
+                      key={label}
+                      className="rounded-2xl border border-[#b8bfb3]/60 bg-white/60 p-4 backdrop-blur-sm"
+                  >
+                    <div className="mb-2 flex h-9 w-9 items-center justify-center rounded-xl bg-[#4a6b5c]/10 text-[#4a6b5c]">
+                      <Icon className="h-4 w-4" />
+                    </div>
+                    <p className="text-sm font-semibold text-[#2f453b]">{label}</p>
+                    <p className="mt-1 text-xs leading-5 text-[#607066]">{description}</p>
+                  </div>
+              ))}
+            </div>
+
+            <p className="mx-auto mt-8 max-w-xl text-sm leading-6 text-[#6f7f73]">
+              To access the app, you need an active account. Create yours below — it only takes a minute.
+            </p>
+
+            <div className="mt-6 flex flex-col items-center justify-center gap-3 sm:flex-row">
               <Button
                   asChild
                   className="h-12 rounded-full bg-[#4a6b5c] px-8 text-base text-white shadow-lg hover:bg-[#3d5a4d]"
               >
                 <Link to="/create-account">
-                  Create account
+                  Create my account
                   <ArrowRight className="ml-1 h-5 w-5" />
                 </Link>
               </Button>
@@ -50,11 +90,12 @@ export default function StartPage() {
               </Button>
             </div>
 
-            <p className="mx-auto mt-6 max-w-xl text-sm leading-6 text-[#6f7f73]">
-              If you already created an account but did not complete payment, use
-              “Complete payment” to continue your activation.
+            <p className="mx-auto mt-5 max-w-xl text-sm leading-6 text-[#6f7f73]">
+              Already registered but didn't finish the payment?{" "}
+              Use <strong className="text-[#4a6b5c]">Complete payment</strong> to pick up right where you left off.
             </p>
-            <p className="mx-auto mt-4 max-w-xl text-sm leading-6 text-[#6f7f73]">
+
+            <p className="mx-auto mt-3 max-w-xl text-sm leading-6 text-[#6f7f73]">
               Need help?{" "}
               <Link
                   to="/support"

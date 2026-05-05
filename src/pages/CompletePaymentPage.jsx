@@ -81,7 +81,7 @@ export default function CompletePaymentPage() {
 
             if (access?.status === "active") {
                 setInfo(
-                    "Your account is already active. You can sign in to the mobile app."
+                    "Great news — your account is already active! Open the MyManasa app and sign in with your email and password."
                 );
                 setIsLoading(false);
                 return;
@@ -129,12 +129,12 @@ export default function CompletePaymentPage() {
                             </div>
 
                             <CardTitle className="text-2xl text-[#2f453b]">
-                                Complete payment
+                                Activate your account
                             </CardTitle>
 
                             <CardDescription className="text-[#607066]">
-                                If you already created your account but did not complete payment,
-                                sign in to continue activation.
+                                Sign in with the email and password you used during registration. We'll take you
+                                straight to the payment page to complete your activation.
                             </CardDescription>
                         </CardHeader>
 
@@ -210,7 +210,7 @@ export default function CompletePaymentPage() {
                                     {isLoading ? (
                                         <>
                                             <Loader2 className="h-5 w-5 animate-spin" />
-                                            Checking account...
+                                            Verifying your account...
                                         </>
                                     ) : (
                                         "Continue to payment"
@@ -218,7 +218,7 @@ export default function CompletePaymentPage() {
                                 </Button>
 
                                 <p className="text-center text-sm text-[#607066]">
-                                    Do not have an account yet?{" "}
+                                    New to MyManasa?{" "}
                                     <Link
                                         to="/create-account"
                                         className="font-medium text-[#4a6b5c] hover:text-[#2f453b]"

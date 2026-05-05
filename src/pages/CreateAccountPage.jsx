@@ -136,8 +136,8 @@ export default function CreateAccountPage() {
                 </CardTitle>
 
                 <CardDescription className="text-[#607066]">
-                  Your account will be created first. Access is activated only
-                  after payment is completed.
+                  Fill in your details below. You'll be taken to a secure payment page to complete
+                  your activation and start using the app.
                 </CardDescription>
               </CardHeader>
 
@@ -151,9 +151,8 @@ export default function CreateAccountPage() {
 
                   {accountExists && (
                       <div className="rounded-2xl border border-[#b8bfb3]/70 bg-white/70 p-4 text-sm leading-6 text-[#607066]">
-                        If you already started your registration, sign in to
-                        continue the payment and activate your account.
-
+                        It looks like you've already started your registration. Sign in below to complete
+                        your payment and activate your access — you're almost there!
                         <Button
                             asChild
                             className="mt-4 h-11 w-full rounded-full bg-[#4a6b5c] text-white hover:bg-[#3d5a4d]"
@@ -309,12 +308,12 @@ export default function CreateAccountPage() {
                   </Button>
 
                   <p className="text-center text-xs leading-5 text-[#6f7f73]">
-                    If payment is not completed, your account will remain
-                    incomplete until you return and complete activation.
+                    Your account information is saved securely. You can always come back later to
+                    complete your payment.
                   </p>
 
                   <p className="text-center text-sm text-[#607066]">
-                    Already created an account?{" "}
+                    Already registered?{" "}
                     <Link
                         to="/complete-payment"
                         className="font-medium text-[#4a6b5c] hover:text-[#2f453b]"

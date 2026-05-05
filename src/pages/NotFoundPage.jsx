@@ -12,7 +12,7 @@ export default function NotFoundPage() {
         <h1 className="text-5xl font-bold text-[#2f453b]">404</h1>
 
         <p className="mt-4 text-[#607066]">
-          This page does not exist.
+            Hmm, we couldn't find that page. It may have been moved or the link might be wrong.
         </p>
 
         <Button

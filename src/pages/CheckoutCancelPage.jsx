@@ -24,19 +24,19 @@ export default function CheckoutCancelPage() {
                 </div>
 
                 <h1 className="text-3xl font-bold text-[#2f453b]">
-                  Payment not completed
+                  Your payment wasn't completed
                 </h1>
 
                 <p className="mt-4 text-sm leading-6 text-[#607066]">
-                  Your account may have been created, but access was not activated
-                  because payment was not completed.
+                  No worries — your account details are saved. You can come back anytime to complete
+                  your payment and activate your access to MyManasa.
                 </p>
 
                 <Button
                     asChild
                     className="mt-7 h-12 w-full rounded-full bg-[#4a6b5c] text-base text-white shadow-lg hover:bg-[#3d5a4d]"
                 >
-                  <Link to="/complete-payment">Complete payment</Link>
+                  <Link to="/complete-payment">Complete my payment</Link>
                 </Button>
 
                 <Link

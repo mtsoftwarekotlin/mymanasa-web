@@ -24,17 +24,17 @@ export default function CheckoutSuccessPage() {
                 </div>
 
                 <h1 className="text-3xl font-bold text-[#2f453b]">
-                  Payment completed
+                  Payment successful!
                 </h1>
 
                 <p className="mt-4 text-sm leading-6 text-[#607066]">
-                  Your payment was completed successfully. Your account activation
-                  is being processed.
+                  Your payment was received successfully. We're activating your account now — this
+                  usually takes just a few minutes.
                 </p>
 
                 <div className="mt-7 rounded-2xl border border-[#b8bfb3]/70 bg-white/70 px-4 py-4 text-sm leading-6 text-[#607066]">
-                  When the mobile app is available, open MyManasa and sign in with
-                  the same email and password you used to create your account.
+                  Once the MyManasa app is available, open it and sign in with the same email and
+                  password you used during registration. That's it — you're ready to go.
                 </div>
 
                 <Button
