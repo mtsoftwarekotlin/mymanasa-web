@@ -54,6 +54,15 @@ export default function StartPage() {
               If you already created an account but did not complete payment, use
               “Complete payment” to continue your activation.
             </p>
+            <p className="mx-auto mt-4 max-w-xl text-sm leading-6 text-[#6f7f73]">
+              Need help?{" "}
+              <Link
+                  to="/support"
+                  className="font-semibold text-[#4a6b5c] underline-offset-4 hover:underline"
+              >
+                Contact support
+              </Link>
+            </p>
           </motion.div>
         </section>
       </main>
