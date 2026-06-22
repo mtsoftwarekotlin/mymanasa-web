@@ -23,7 +23,7 @@ import {
     CardTitle,
 } from "@/components/ui/card";
 
-const SUPPORT_EMAIL = "support@mymanasa.com";
+const SUPPORT_EMAIL = "nikhil@mtsoftware.com.au";
 
 const whatIsMyManasa = [
     {

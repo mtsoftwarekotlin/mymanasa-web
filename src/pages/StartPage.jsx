@@ -103,6 +103,13 @@ export default function StartPage() {
               >
                 Contact support
               </Link>
+              {" · "}
+              <Link
+                  to="/privacy"
+                  className="font-semibold text-[#4a6b5c] underline-offset-4 hover:underline"
+              >
+                Privacy Policy
+              </Link>
             </p>
           </motion.div>
         </section>

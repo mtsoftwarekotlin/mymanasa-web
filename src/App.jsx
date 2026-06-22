@@ -7,7 +7,7 @@ import CheckoutSuccessPage from "@/pages/CheckoutSuccessPage";
 import CheckoutCancelPage from "@/pages/CheckoutCancelPage";
 import SupportPage from "@/pages/SupportPage";
 import NotFoundPage from "@/pages/NotFoundPage";
-
+import PrivacyPolicyPage from "@/pages/PrivacyPolicyPage";
 export default function App() {
     return (
         <BrowserRouter>
@@ -19,6 +19,7 @@ export default function App() {
                 <Route path="/cancel" element={<CheckoutCancelPage />} />
                 <Route path="/support" element={<SupportPage />} />
                 <Route path="*" element={<NotFoundPage />} />
+                <Route path="/privacy" element={<PrivacyPolicyPage />} />
             </Routes>
         </BrowserRouter>
     );
