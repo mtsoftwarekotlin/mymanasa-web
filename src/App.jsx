@@ -8,6 +8,7 @@ import CheckoutCancelPage from "@/pages/CheckoutCancelPage";
 import SupportPage from "@/pages/SupportPage";
 import NotFoundPage from "@/pages/NotFoundPage";
 import PrivacyPolicyPage from "@/pages/PrivacyPolicyPage";
+import DeleteAccountPage from "@/pages/DeleteAccountPage";
 export default function App() {
     return (
         <BrowserRouter>
@@ -18,8 +19,9 @@ export default function App() {
                 <Route path="/success" element={<CheckoutSuccessPage />} />
                 <Route path="/cancel" element={<CheckoutCancelPage />} />
                 <Route path="/support" element={<SupportPage />} />
-                <Route path="*" element={<NotFoundPage />} />
                 <Route path="/privacy" element={<PrivacyPolicyPage />} />
+                <Route path="/delete-account" element={<DeleteAccountPage />} />
+                <Route path="*" element={<NotFoundPage />} />
             </Routes>
         </BrowserRouter>
     );
